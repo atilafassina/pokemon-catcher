@@ -7,7 +7,7 @@ import { getXataClient } from "~/lib/xata.codegen"
 const xata = getXataClient()
 
 export const trainerAction = async (
-  { id, name }: Record<"name" | "id", string>,
+  { id, name, image }: Record<"name" | "id" | "image", string>,
   action: string
 ) => {
   switch (action) {
@@ -19,7 +19,7 @@ export const trainerAction = async (
     }
     case "catch": {
       logger.success("trying to catch")
-      //   await sleep()
+      await sleep()
 
       if (getRandomNumber() % 2 === 0) {
         logger.success("caught!")
@@ -27,6 +27,7 @@ export const trainerAction = async (
         await xata.db.pokemons.create({
           pkmName: name,
           pkmId: id,
+          pkmImg: image,
         })
 
         revalidatePath("/")

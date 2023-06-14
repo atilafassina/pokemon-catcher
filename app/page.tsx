@@ -1,4 +1,5 @@
 import Image from "next/image"
+import MyPkm from "~/components/my-pkm"
 import { Trainer } from "~/components/trainer"
 import { TOTAL_POKEMONS, getRandomNumber } from "~/lib/helpers"
 
@@ -33,7 +34,12 @@ export default async function Home() {
           height={200}
         />
       </div>
-      <Trainer id={String(pkm.id)} name={pkm.name} />
+      <Trainer
+        id={String(pkm.id)}
+        name={pkm.name}
+        image={pkm.sprites.front_default}
+      />
+      <MyPkm />
     </main>
   )
 }

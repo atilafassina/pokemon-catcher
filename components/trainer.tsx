@@ -3,14 +3,21 @@
 import { useTransition } from "react"
 import { trainerAction } from "./trainer-action"
 
-export function Trainer({ id, name }: Record<"id" | "name", string>) {
+export function Trainer({
+  id,
+  name,
+  image,
+}: Record<"id" | "name" | "image", string>) {
   const [isPending, startTransition] = useTransition()
 
   return (
     <form
       action={async (formData) =>
         startTransition(() => {
-          trainerAction({ id, name }, formData.get("actionButton") as string)
+          trainerAction(
+            { id, name, image },
+            formData.get("actionButton") as string
+          )
         })
       }
     >

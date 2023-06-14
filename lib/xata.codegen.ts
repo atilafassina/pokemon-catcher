@@ -12,6 +12,7 @@ const tables = [
     columns: [
       { name: "pkmName", type: "string" },
       { name: "pkmId", type: "string" },
+      { name: "pkmImg", type: "string" },
     ],
   },
 ] as const;
