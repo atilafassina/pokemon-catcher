@@ -12,7 +12,7 @@ export const trainerAction = async (
 ) => {
   switch (action) {
     case "pass": {
-      console.log("passing")
+      logger.info("passing")
       revalidatePath("/")
 
       break

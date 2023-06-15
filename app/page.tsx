@@ -17,7 +17,10 @@ type Pokemon = {
 
 export default async function Home() {
   const { results: list }: PkmApiList = await fetch(
-    `https://pokeapi.co/api/v2/pokemon?limit=${TOTAL_POKEMONS}`
+    `https://pokeapi.co/api/v2/pokemon?limit=${TOTAL_POKEMONS}`,
+    {
+      next: { revalidate: 86400 },
+    }
   ).then((r) => r.json())
   const index = getRandomNumber(TOTAL_POKEMONS)
   const pkm: Pokemon = await fetch(list[index].url).then((r) => r.json())
@@ -25,7 +28,7 @@ export default async function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24 text-white">
       <div>
-        <p>{pkm.name}</p>
+        <h1 className="text-6xl text-center whitespace-nowrap">{pkm.name}</h1>
         <Image
           priority
           src={pkm.sprites.front_default}

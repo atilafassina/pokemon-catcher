@@ -2,6 +2,7 @@
 
 import { useTransition } from "react"
 import { trainerAction } from "./trainer-action"
+import { CatchButton, PassButton } from "./styled-button"
 
 export function Trainer({
   id,
@@ -20,20 +21,25 @@ export function Trainer({
           )
         })
       }
+      className="flex gap-x-5"
     >
-      <button type="submit" name="actionButton" value="pass">
+      <PassButton
+        type="submit"
+        name="actionButton"
+        value="pass"
+        disabled={isPending}
+      >
         Pass
-      </button>
-      <button
+      </PassButton>
+      <CatchButton
         name="actionButton"
         type="submit"
         value="catch"
-        className={`${
-          isPending ? "animate-bounce" : ""
-        } -4 py-2 font-semibold text-sm bg-sky-500 text-white rounded-none shadow-sm`}
+        isPending={isPending}
+        disabled={isPending}
       >
         Catch!
-      </button>
+      </CatchButton>
     </form>
   )
 }
