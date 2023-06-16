@@ -1,6 +1,6 @@
 import "server-only"
 import chalk from "chalk"
-export const TOTAL_POKEMONS = 1000
+export const TOTAL_POKEMONS = 251
 
 export function getRandomNumber(int: number = TOTAL_POKEMONS) {
   return Math.floor(Math.random() * (int + 1))
